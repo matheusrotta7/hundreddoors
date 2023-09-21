@@ -18,3 +18,18 @@ func _ready():
 
 func interact(relate):
 	print("Numpad" + str(number))
+	var number_str : String
+	number_str = str(number)
+	
+	var input_password = get_node("../../PasswordScreen/InputPassword")
+	
+	var cur_str : String 
+	cur_str = input_password.get_text()
+	print(cur_str)
+	if (cur_str.length() < 4):
+		print("is  smaller than 4")
+		var new_str = cur_str + number_str
+		input_password.set_text(new_str)
+	
+	
+	

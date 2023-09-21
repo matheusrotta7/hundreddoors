@@ -20,6 +20,13 @@ func interact(relate):
 			$AnimationPlayer.play("open")
 		else:
 			$AnimationPlayer.play_backwards("open")
+			
+func opendoor():
+	if !animating:
+		if state == CLOSED:
+			$AnimationPlayer.play("open")
+		else:
+			$AnimationPlayer.play_backwards("open")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	animating = false

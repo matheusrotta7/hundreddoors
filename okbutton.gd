@@ -20,7 +20,7 @@ func interact(relate):
 	var input_password_label = get_node("../../PasswordScreen/InputPassword")
 	var password_str : String = input_password_label.get_text()
 	if (password_str == password):
-		var door = get_node("../../Door/Door")
+		var door = get_node("../../Door")
 		if (door.has_method("opendoor")):
 			door.opendoor()
 	else:

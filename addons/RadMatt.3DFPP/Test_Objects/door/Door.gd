@@ -15,11 +15,12 @@ func _ready():
 	pass
 
 func interact(relate):
-	if !animating:
-		if state == CLOSED:
-			$AnimationPlayer.play("open")
-		else:
-			$AnimationPlayer.play_backwards("open")
+#	if !animating:
+#		if state == CLOSED:
+#			$AnimationPlayer.play("open")
+#		else:
+#			$AnimationPlayer.play_backwards("open")
+	pass
 			
 func opendoor():
 	if !animating:

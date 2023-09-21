@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=105 format=2]
 
 [ext_resource path="res://addons/RadMatt.3DFPP/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://misc/instructions.png" type="Texture" id=2]
@@ -61,6 +61,9 @@ flags_transparent = true
 albedo_texture = ExtResource( 4 )
 roughness = 0.0
 uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="SpatialMaterial" id=66]
+albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="ArrayMesh" id=35]
 resource_name = "numpad_Cube"
@@ -440,9 +443,6 @@ surfaces/0 = {
 [sub_resource type="BoxShape" id=69]
 extents = Vector3( 0.203749, 0.216284, 0.201083 )
 
-[sub_resource type="SpatialMaterial" id=66]
-albedo_color = Color( 0, 0, 0, 1 )
-
 [sub_resource type="CubeMesh" id=6]
 
 [sub_resource type="SpatialMaterial" id=7]
@@ -569,10 +569,42 @@ roughness = 0.0
 [sub_resource type="BoxShape" id=31]
 extents = Vector3( 0.483239, 0.695562, 0.491112 )
 
+[sub_resource type="Animation" id=76]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -1.73869, -1.73869 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -90, 0 ) ]
+}
+
+[sub_resource type="CubeMesh" id=70]
+
+[sub_resource type="ImageTexture" id=71]
+
+[sub_resource type="SpatialMaterial" id=72]
+albedo_color = Color( 1, 0.666667, 0, 1 )
+roughness_texture = SubResource( 71 )
+
+[sub_resource type="SpatialMaterial" id=74]
+albedo_color = Color( 1, 0.631373, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=73]
+albedo_color = Color( 1, 0.678431, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=75]
+albedo_color = Color( 1, 0.631373, 0, 1 )
+
 [node name="Room_01" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.0959454, 4.7763 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201916, 1.42929, 4.7763 )
 
 [node name="world" type="Node" parent="."]
 
@@ -603,208 +635,208 @@ transform = Transform( -7.71819e-08, 0, -1.76572, 0, 1.76572, 0, 1.76572, 0, -7.
 [node name="Door" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1.31671e-07, 0, -1.74403, 0, 1.74403, 0, 1.74403, 0, 1.31671e-07, -5.9244, 0, -4.93043 )
 
-[node name="numpad" type="Spatial" parent="Door"]
-transform = Transform( 6.61199e-09, 0, 0.157797, 0, 0.179484, 0, -0.0875782, 0, 1.19133e-08, -0.753909, 1.28727, -0.0787592 )
-
-[node name="Frame" type="MeshInstance" parent="Door/numpad"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 35 )
-
-[node name="numpad1" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-
-[node name="Numpad1" type="MeshInstance" parent="Door/numpad/numpad1"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259666, 0, 0 )
-mesh = SubResource( 38 )
-skeleton = NodePath("../../Frame")
-
-[node name="textnumber1" type="MeshInstance" parent="Door/numpad/numpad1/Numpad1"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00532034, 0.0274451, -0.189141, -0.243637, -0.426884, 0.000213519, -1.43996, 0.412112, 0.426346 )
-mesh = SubResource( 39 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad1"]
-transform = Transform( -0.370649, 0, 0, 0, 0.469791, 0, 0, 0, 0.508608, 0, 0.490787, 0.377213 )
-shape = SubResource( 56 )
-
-[node name="numpad2" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 2
-
-[node name="Numpad2" type="MeshInstance" parent="Door/numpad/numpad2"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219765, 0, 0 )
-mesh = SubResource( 40 )
-skeleton = NodePath("../../Frame")
-
-[node name="TextNum2" type="MeshInstance" parent="Door/numpad/numpad2/Numpad2"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00398081, 0.0297916, -0.189139, -0.243662, -0.426727, -0.000826344, -1.43996, 0.418472, 0.043489 )
-mesh = SubResource( 41 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad2"]
-transform = Transform( 1, 0, 0, 0, 0.612273, 0, 0, 0, 0.621394, 0, 0.483384, 0 )
-shape = SubResource( 57 )
-
-[node name="numpad3" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 3
-
-[node name="Numpad3" type="MeshInstance" parent="Door/numpad/numpad3"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.026371, 0, 0 )
-mesh = SubResource( 42 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num3" type="MeshInstance" parent="Door/numpad/numpad3/Numpad3"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00377686, 0.043359, -0.189017, -0.243666, -0.425562, -0.00684611, -1.43996, 0.411145, -0.333822 )
-mesh = SubResource( 43 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad3"]
-transform = Transform( 1.11597, 0, 0, 0, 0.559994, 0, 0, 0, 0.209796, 0.0026474, 0.459852, -0.393021 )
-shape = SubResource( 58 )
-
-[node name="numpad4" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 4
-
-[node name="Numpad4" type="MeshInstance" parent="Door/numpad/numpad4"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0316467, 0, 0 )
-mesh = SubResource( 44 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num4" type="MeshInstance" parent="Door/numpad/numpad4/Numpad4"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.003143, 0.0312586, -0.189135, -0.243675, -0.426622, -0.00147665, -1.43996, 0.0851188, 0.428127 )
-mesh = SubResource( 45 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad4"]
-transform = Transform( 0.246219, 0, 0, 0, 0.648501, 0, 0, 0, 0.84205, 0, 0.149973, 0.371735 )
-shape = SubResource( 59 )
-
-[node name="numpad5" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 5
-
-[node name="Numpad5" type="MeshInstance" parent="Door/numpad/numpad5"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
-mesh = SubResource( 46 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num5" type="MeshInstance" parent="Door/numpad/numpad5/Numpad5"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.0119426, 0.0158285, -0.189065, -0.243402, -0.427473, 0.00535596, -1.43996, 0.0869503, 0.0465417 )
-mesh = SubResource( 47 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad5"]
-transform = Transform( 1, 0, 0, 0, 0.668035, 0, 0, 0, 0.623462, 0.0874977, 0.154666, 0 )
-shape = SubResource( 60 )
-
-[node name="numpad6" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 6
-
-[node name="Numpad6" type="MeshInstance" parent="Door/numpad/numpad6"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
-mesh = SubResource( 48 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num6" type="MeshInstance" parent="Door/numpad/numpad6/Numpad6"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.000816539, 0.0353301, -0.189112, -0.243694, -0.426304, -0.00328222, -1.43996, 0.0759606, -0.351223 )
-mesh = SubResource( 49 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad6"]
-transform = Transform( 0.826868, 0, 0, 0, 0.782951, 0, 0, 0, 0.75537, 0.108501, 0.130986, -0.41716 )
-shape = SubResource( 61 )
-
-[node name="numpad7" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 7
-
-[node name="Numpad7" type="MeshInstance" parent="Door/numpad/numpad7"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290108, 0, 0 )
-mesh = SubResource( 50 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num7" type="MeshInstance" parent="Door/numpad/numpad7/Numpad7"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00732313, 0.0495487, -0.188897, -0.243585, -0.424886, -0.00959662, -1.43996, -0.268382, 0.433621 )
-mesh = SubResource( 51 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad7"]
-transform = Transform( 0.699438, 0, 0, 0, 0.625191, 0, 0, 0, 0.664572, 0.0697899, -0.214666, 0.392473 )
-shape = SubResource( 62 )
-
-[node name="numpad8" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 8
-
-[node name="Numpad8" type="MeshInstance" parent="Door/numpad/numpad8"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0241737, 0, 0 )
-mesh = SubResource( 52 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num8" type="MeshInstance" parent="Door/numpad/numpad8/Numpad8"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, 0.0062007, 0.0475904, -0.188939, -0.243616, -0.42511, -0.00872615, -1.43996, -0.268382, 0.0489836 )
-mesh = SubResource( 53 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad8"]
-transform = Transform( 1, 0, 0, 0, 0.627224, 0, 0, 0, 0.655069, 0.0611115, -0.203781, -0.011673 )
-shape = SubResource( 63 )
-
-[node name="numpad9" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 9
-
-[node name="Numpad9" type="MeshInstance" parent="Door/numpad/numpad9"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0307693, 0, 0 )
-mesh = SubResource( 54 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num9" type="MeshInstance" parent="Door/numpad/numpad9/Numpad9"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00527782, 0.0275196, -0.189141, -0.243638, -0.426879, 0.000180505, -1.43996, -0.257392, -0.350307 )
-mesh = SubResource( 55 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad9"]
-transform = Transform( 1, 0, 0, 0, 0.679136, 0, 0, 0, 0.698123, 0.0912285, -0.195035, -0.401394 )
-shape = SubResource( 64 )
-
-[node name="numpad0" type="StaticBody" parent="Door/numpad"]
-script = ExtResource( 23 )
-number = 0
-
-[node name="Numpad0" type="MeshInstance" parent="Door/numpad/numpad0"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158195, 0, 0.00439453 )
-mesh = SubResource( 36 )
-skeleton = NodePath("../../Frame")
-
-[node name="Num0" type="MeshInstance" parent="Door/numpad/numpad0/Numpad0"]
-transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00941434, 0.0202667, -0.18911, -0.243513, -0.427285, 0.00339232, -1.43996, -0.5568, 0.0409245 )
-mesh = SubResource( 37 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/numpad0"]
-transform = Transform( 1, 0, -5.42101e-20, 0, 0.75685, 0, 0, 0, 0.659972, 0.038166, -0.49555, -0.0128098 )
-shape = SubResource( 65 )
-
-[node name="okbutton" type="StaticBody" parent="Door/numpad"]
-transform = Transform( 2.30696, 0, -8.0646e-13, 0, 0.996798, 0, 0, 0, 0.912407, -1.19143, 0.00390577, -0.0276165 )
-script = ExtResource( 28 )
-
-[node name="OkButton" type="MeshInstance" parent="Door/numpad/okbutton"]
-transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1.92181, 0.377987, -0.0124291, -0.38686 )
-mesh = SubResource( 67 )
-
-[node name="OkText" type="MeshInstance" parent="Door/numpad/okbutton/OkButton"]
-transform = Transform( -0.0061201, -0.891603, -0.00960069, -0.00554258, 0.0484764, -0.188694, -0.09879, 0.0525156, 0.0111814, -1.26788, -0.558927, -0.0046182 )
-mesh = SubResource( 68 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Door/numpad/okbutton"]
-transform = Transform( 0.582386, 0, 3.73719e-20, 0, 0.524521, 0, 0, 0, 1.06822, 0.53216, -0.515473, -0.415514 )
-shape = SubResource( 69 )
-
-[node name="PasswordScreen" type="CSGBox" parent="Door"]
+[node name="PasswordScreen" type="CSGBox" parent="Door/Door" index="3"]
 transform = Transform( 2.18446e-09, 0, 0.573385, 0, 0.275767, 0, -0.028934, 0, 4.32895e-08, -0.768714, 1.59684, -0.0603774 )
 material_override = SubResource( 66 )
 height = 0.471535
 depth = 0.761199
 
-[node name="InputPassword" type="Label3D" parent="Door/PasswordScreen"]
+[node name="InputPassword" type="Label3D" parent="Door/Door/PasswordScreen"]
 transform = Transform( -0.381208, 0, 19.1821, 0, 9.30705, 0, -6.18047, 0, -11.8571, 1.12852, -0.0370221, -0.00277376 )
 pixel_size = 0.0023
 modulate = Color( 0.0705882, 0.564706, 0, 1 )
+
+[node name="numpad" type="Spatial" parent="Door/Door" index="4"]
+transform = Transform( 6.61199e-09, 0, 0.157797, 0, 0.179484, 0, -0.0875782, 0, 1.19133e-08, -0.753909, 1.28727, -0.0787585 )
+
+[node name="Frame" type="MeshInstance" parent="Door/Door/numpad"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 35 )
+
+[node name="numpad1" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+
+[node name="Numpad1" type="MeshInstance" parent="Door/Door/numpad/numpad1"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259666, 0, 0 )
+mesh = SubResource( 38 )
+skeleton = NodePath("../../Frame")
+
+[node name="textnumber1" type="MeshInstance" parent="Door/Door/numpad/numpad1/Numpad1"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00532034, 0.0274451, -0.189141, -0.243637, -0.426884, 0.000213519, -1.43996, 0.412112, 0.426346 )
+mesh = SubResource( 39 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad1"]
+transform = Transform( -0.370649, 0, 0, 0, 0.469791, 0, 0, 0, 0.508608, 0, 0.490787, 0.377213 )
+shape = SubResource( 56 )
+
+[node name="numpad2" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 2
+
+[node name="Numpad2" type="MeshInstance" parent="Door/Door/numpad/numpad2"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219765, 0, 0 )
+mesh = SubResource( 40 )
+skeleton = NodePath("../../Frame")
+
+[node name="TextNum2" type="MeshInstance" parent="Door/Door/numpad/numpad2/Numpad2"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00398081, 0.0297916, -0.189139, -0.243662, -0.426727, -0.000826344, -1.43996, 0.418472, 0.043489 )
+mesh = SubResource( 41 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad2"]
+transform = Transform( 1, 0, 0, 0, 0.612273, 0, 0, 0, 0.621394, 0, 0.483384, 0 )
+shape = SubResource( 57 )
+
+[node name="numpad3" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 3
+
+[node name="Numpad3" type="MeshInstance" parent="Door/Door/numpad/numpad3"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.026371, 0, 0 )
+mesh = SubResource( 42 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num3" type="MeshInstance" parent="Door/Door/numpad/numpad3/Numpad3"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00377686, 0.043359, -0.189017, -0.243666, -0.425562, -0.00684611, -1.43996, 0.411145, -0.333822 )
+mesh = SubResource( 43 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad3"]
+transform = Transform( 1.11597, 0, 0, 0, 0.559994, 0, 0, 0, 0.209796, 0.0026474, 0.459852, -0.393021 )
+shape = SubResource( 58 )
+
+[node name="numpad4" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 4
+
+[node name="Numpad4" type="MeshInstance" parent="Door/Door/numpad/numpad4"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0316467, 0, 0 )
+mesh = SubResource( 44 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num4" type="MeshInstance" parent="Door/Door/numpad/numpad4/Numpad4"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.003143, 0.0312586, -0.189135, -0.243675, -0.426622, -0.00147665, -1.43996, 0.0851188, 0.428127 )
+mesh = SubResource( 45 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad4"]
+transform = Transform( 0.246219, 0, 0, 0, 0.648501, 0, 0, 0, 0.84205, 0, 0.149973, 0.371735 )
+shape = SubResource( 59 )
+
+[node name="numpad5" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 5
+
+[node name="Numpad5" type="MeshInstance" parent="Door/Door/numpad/numpad5"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
+mesh = SubResource( 46 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num5" type="MeshInstance" parent="Door/Door/numpad/numpad5/Numpad5"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.0119426, 0.0158285, -0.189065, -0.243402, -0.427473, 0.00535596, -1.43996, 0.0869503, 0.0465417 )
+mesh = SubResource( 47 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad5"]
+transform = Transform( 1, 0, 0, 0, 0.668035, 0, 0, 0, 0.623462, 0.0874977, 0.154666, 0 )
+shape = SubResource( 60 )
+
+[node name="numpad6" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 6
+
+[node name="Numpad6" type="MeshInstance" parent="Door/Door/numpad/numpad6"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
+mesh = SubResource( 48 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num6" type="MeshInstance" parent="Door/Door/numpad/numpad6/Numpad6"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.000816539, 0.0353301, -0.189112, -0.243694, -0.426304, -0.00328222, -1.43996, 0.0759606, -0.351223 )
+mesh = SubResource( 49 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad6"]
+transform = Transform( 0.826868, 0, 0, 0, 0.782951, 0, 0, 0, 0.75537, 0.108501, 0.130986, -0.41716 )
+shape = SubResource( 61 )
+
+[node name="numpad7" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 7
+
+[node name="Numpad7" type="MeshInstance" parent="Door/Door/numpad/numpad7"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290108, 0, 0 )
+mesh = SubResource( 50 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num7" type="MeshInstance" parent="Door/Door/numpad/numpad7/Numpad7"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00732313, 0.0495487, -0.188897, -0.243585, -0.424886, -0.00959662, -1.43996, -0.268382, 0.433621 )
+mesh = SubResource( 51 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad7"]
+transform = Transform( 0.699438, 0, 0, 0, 0.625191, 0, 0, 0, 0.664572, 0.0697899, -0.214666, 0.392473 )
+shape = SubResource( 62 )
+
+[node name="numpad8" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 8
+
+[node name="Numpad8" type="MeshInstance" parent="Door/Door/numpad/numpad8"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0241737, 0, 0 )
+mesh = SubResource( 52 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num8" type="MeshInstance" parent="Door/Door/numpad/numpad8/Numpad8"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.0062007, 0.0475904, -0.188939, -0.243616, -0.42511, -0.00872615, -1.43996, -0.268382, 0.0489836 )
+mesh = SubResource( 53 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad8"]
+transform = Transform( 1, 0, 0, 0, 0.627224, 0, 0, 0, 0.655069, 0.0611115, -0.203781, -0.011673 )
+shape = SubResource( 63 )
+
+[node name="numpad9" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 9
+
+[node name="Numpad9" type="MeshInstance" parent="Door/Door/numpad/numpad9"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0307693, 0, 0 )
+mesh = SubResource( 54 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num9" type="MeshInstance" parent="Door/Door/numpad/numpad9/Numpad9"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00527782, 0.0275196, -0.189141, -0.243638, -0.426879, 0.000180505, -1.43996, -0.257392, -0.350307 )
+mesh = SubResource( 55 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad9"]
+transform = Transform( 1, 0, 0, 0, 0.679136, 0, 0, 0, 0.698123, 0.0912285, -0.195035, -0.401394 )
+shape = SubResource( 64 )
+
+[node name="numpad0" type="StaticBody" parent="Door/Door/numpad"]
+script = ExtResource( 23 )
+number = 0
+
+[node name="Numpad0" type="MeshInstance" parent="Door/Door/numpad/numpad0"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158195, 0, 0.00439453 )
+mesh = SubResource( 36 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num0" type="MeshInstance" parent="Door/Door/numpad/numpad0/Numpad0"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00941434, 0.0202667, -0.18911, -0.243513, -0.427285, 0.00339232, -1.43996, -0.5568, 0.0409245 )
+mesh = SubResource( 37 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/numpad0"]
+transform = Transform( 1, 0, -5.42101e-20, 0, 0.75685, 0, 0, 0, 0.659972, 0.038166, -0.49555, -0.0128098 )
+shape = SubResource( 65 )
+
+[node name="okbutton" type="StaticBody" parent="Door/Door/numpad"]
+transform = Transform( 2.30696, 0, -8.0646e-13, 0, 0.996798, 0, 0, 0, 0.912407, -1.19143, 0.00390577, -0.0276165 )
+script = ExtResource( 28 )
+
+[node name="OkButton" type="MeshInstance" parent="Door/Door/numpad/okbutton"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1.92181, 0.377987, -0.0124291, -0.38686 )
+mesh = SubResource( 67 )
+
+[node name="OkText" type="MeshInstance" parent="Door/Door/numpad/okbutton/OkButton"]
+transform = Transform( -0.0061201, -0.891603, -0.00960069, -0.00554258, 0.0484764, -0.188694, -0.09879, 0.0525156, 0.0111814, -1.26788, -0.558927, -0.0046182 )
+mesh = SubResource( 68 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Door/Door/numpad/okbutton"]
+transform = Transform( 0.582386, 0, 3.73719e-20, 0, 0.524521, 0, 0, 0, 1.06822, 0.53216, -0.515473, -0.415514 )
+shape = SubResource( 69 )
 
 [node name="Room" type="Spatial" parent="."]
 
@@ -829,7 +861,7 @@ mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
 [node name="floor" type="MeshInstance" parent="Room"]
-transform = Transform( 6.05, 0, 0, 0, 0.05, 0, 0, 0, 11.25, 0, -0.0426321, 0 )
+transform = Transform( 100, 0, 0, 0, 0.05, 0, 0, 0, 100, 0, -0.0426321, 0 )
 mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
 
@@ -1033,7 +1065,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00163519, 0.810587, -0.0007
 transform = Transform( 1.40646, 0, 0, 0, 1.40646, 0, 0, 0, 1.40646, 5.85912, -0.133712, -3.43418 )
 
 [node name="plastic_ball" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.999582, -0.0288956, 0, 0.0288956, 0.999582, -2.71077, 2.10183, -1.35945 )
+transform = Transform( 1.01059, 0, 0, 0, 1.01017, -0.0292017, 0, 0.0292017, 1.01017, -2.71077, 2.10183, -1.35945 )
 mass = 10.0
 physics_material_override = SubResource( 32 )
 can_sleep = false
@@ -1129,6 +1161,389 @@ shadow_bias = 0.14
 shadow_contact = 0.45
 omni_range = 11.5403
 
+[node name="Ceiling_Lamp3" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58.9698, 11.7346, 5.99616 )
+
+[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp3"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 1.92667 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 27 )
+material/1 = SubResource( 28 )
+material/2 = SubResource( 29 )
+material/3 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
+shape = SubResource( 31 )
+
+[node name="light_3" type="OmniLight" parent="Ceiling_Lamp3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.792, -0.242053, -8.14045 )
+shadow_enabled = true
+shadow_bias = 0.14
+shadow_contact = 0.45
+omni_range = 11.5403
+
+[node name="Ceiling_Lamp4" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.5723, 9.6169, -6.43343 )
+
+[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp4"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 0 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 27 )
+material/1 = SubResource( 28 )
+material/2 = SubResource( 29 )
+material/3 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
+shape = SubResource( 31 )
+
+[node name="light_1" type="OmniLight" parent="Ceiling_Lamp4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0800302, -2.08603, 0.0658698 )
+shadow_enabled = true
+shadow_bias = 0.14
+shadow_contact = 0.45
+omni_range = 11.5403
+
+[node name="Ceiling_Lamp5" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.8468, 9.6169, 6.48122 )
+
+[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp5"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 0 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 27 )
+material/1 = SubResource( 28 )
+material/2 = SubResource( 29 )
+material/3 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
+shape = SubResource( 31 )
+
+[node name="light_1" type="OmniLight" parent="Ceiling_Lamp5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0800302, -2.08603, 0.0658698 )
+shadow_enabled = true
+shadow_bias = 0.14
+shadow_contact = 0.45
+omni_range = 11.5403
+
+[node name="Ceiling_Lamp6" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.6617, 9.6169, 6.48122 )
+
+[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp6"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 0 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 27 )
+material/1 = SubResource( 28 )
+material/2 = SubResource( 29 )
+material/3 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
+shape = SubResource( 31 )
+
+[node name="light_1" type="OmniLight" parent="Ceiling_Lamp6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0800302, -2.08603, 0.0658698 )
+shadow_enabled = true
+shadow_bias = 0.14
+shadow_contact = 0.45
+omni_range = 11.5403
+
+[node name="Ceiling_Lamp7" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.582, 9.6169, -7.64968 )
+
+[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp7"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 0 )
+mesh = ExtResource( 21 )
+material/0 = SubResource( 27 )
+material/1 = SubResource( 28 )
+material/2 = SubResource( 29 )
+material/3 = SubResource( 30 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
+shape = SubResource( 31 )
+
+[node name="light_1" type="OmniLight" parent="Ceiling_Lamp7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0800302, -2.08603, 0.0658698 )
+shadow_enabled = true
+shadow_bias = 0.14
+shadow_contact = 0.45
+omni_range = 11.5403
+
+[node name="Room_02" type="Node" parent="."]
+
+[node name="Door2" parent="Room_02" instance=ExtResource( 6 )]
+transform = Transform( 1.31671e-07, 0, -1.74403, 0, 1.74403, 0, 1.74403, 0, 1.31671e-07, -70.2328, 0, 0.505558 )
+
+[node name="AnimationPlayer" parent="Room_02/Door2/Door" index="2"]
+anims/open = SubResource( 76 )
+
+[node name="PasswordScreen" type="CSGBox" parent="Room_02/Door2/Door" index="3"]
+transform = Transform( 2.18446e-09, 0, 0.573385, 0, 0.275767, 0, -0.028934, 0, 4.32895e-08, -0.768714, 1.59684, -0.0603774 )
+material_override = SubResource( 66 )
+height = 0.471535
+depth = 0.761199
+
+[node name="InputPassword" type="Label3D" parent="Room_02/Door2/Door/PasswordScreen"]
+transform = Transform( -0.381208, 0, 19.1821, 0, 9.30705, 0, -6.18047, 0, -11.8571, 1.12852, -0.0370221, -0.00277376 )
+pixel_size = 0.0023
+modulate = Color( 0.0705882, 0.564706, 0, 1 )
+
+[node name="numpad" type="Spatial" parent="Room_02/Door2/Door" index="4"]
+transform = Transform( 6.61199e-09, 0, 0.157797, 0, 0.179484, 0, -0.0875782, 0, 1.19133e-08, -0.753909, 1.28727, -0.0787585 )
+
+[node name="Frame" type="MeshInstance" parent="Room_02/Door2/Door/numpad"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 35 )
+
+[node name="numpad1" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+
+[node name="Numpad1" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad1"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0259666, 0, 0 )
+mesh = SubResource( 38 )
+skeleton = NodePath("../../Frame")
+
+[node name="textnumber1" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad1/Numpad1"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00532034, 0.0274451, -0.189141, -0.243637, -0.426884, 0.000213519, -1.43996, 0.412112, 0.426346 )
+mesh = SubResource( 39 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad1"]
+transform = Transform( -0.370649, 0, 0, 0, 0.469791, 0, 0, 0, 0.508608, 0, 0.490787, 0.377213 )
+shape = SubResource( 56 )
+
+[node name="numpad2" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 2
+
+[node name="Numpad2" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad2"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219765, 0, 0 )
+mesh = SubResource( 40 )
+skeleton = NodePath("../../Frame")
+
+[node name="TextNum2" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad2/Numpad2"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00398081, 0.0297916, -0.189139, -0.243662, -0.426727, -0.000826344, -1.43996, 0.418472, 0.043489 )
+mesh = SubResource( 41 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad2"]
+transform = Transform( 1, 0, 0, 0, 0.612273, 0, 0, 0, 0.621394, 0, 0.483384, 0 )
+shape = SubResource( 57 )
+
+[node name="numpad3" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 3
+
+[node name="Numpad3" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad3"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.026371, 0, 0 )
+mesh = SubResource( 42 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num3" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad3/Numpad3"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00377686, 0.043359, -0.189017, -0.243666, -0.425562, -0.00684611, -1.43996, 0.411145, -0.333822 )
+mesh = SubResource( 43 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad3"]
+transform = Transform( 1.11597, 0, 0, 0, 0.559994, 0, 0, 0, 0.209796, 0.0026474, 0.459852, -0.393021 )
+shape = SubResource( 58 )
+
+[node name="numpad4" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 4
+
+[node name="Numpad4" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad4"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0316467, 0, 0 )
+mesh = SubResource( 44 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num4" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad4/Numpad4"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.003143, 0.0312586, -0.189135, -0.243675, -0.426622, -0.00147665, -1.43996, 0.0851188, 0.428127 )
+mesh = SubResource( 45 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad4"]
+transform = Transform( 0.246219, 0, 0, 0, 0.648501, 0, 0, 0, 0.84205, 0, 0.149973, 0.371735 )
+shape = SubResource( 59 )
+
+[node name="numpad5" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 5
+
+[node name="Numpad5" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad5"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
+mesh = SubResource( 46 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num5" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad5/Numpad5"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.0119426, 0.0158285, -0.189065, -0.243402, -0.427473, 0.00535596, -1.43996, 0.0869503, 0.0465417 )
+mesh = SubResource( 47 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad5"]
+transform = Transform( 1, 0, 0, 0, 0.668035, 0, 0, 0, 0.623462, 0.0874977, 0.154666, 0 )
+shape = SubResource( 60 )
+
+[node name="numpad6" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 6
+
+[node name="Numpad6" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad6"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0274696, 0, 0 )
+mesh = SubResource( 48 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num6" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad6/Numpad6"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.000816539, 0.0353301, -0.189112, -0.243694, -0.426304, -0.00328222, -1.43996, 0.0759606, -0.351223 )
+mesh = SubResource( 49 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad6"]
+transform = Transform( 0.826868, 0, 0, 0, 0.782951, 0, 0, 0, 0.75537, 0.108501, 0.130986, -0.41716 )
+shape = SubResource( 61 )
+
+[node name="numpad7" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 7
+
+[node name="Numpad7" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad7"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0290108, 0, 0 )
+mesh = SubResource( 50 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num7" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad7/Numpad7"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.00732313, 0.0495487, -0.188897, -0.243585, -0.424886, -0.00959662, -1.43996, -0.268382, 0.433621 )
+mesh = SubResource( 51 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad7"]
+transform = Transform( 0.699438, 0, 0, 0, 0.625191, 0, 0, 0, 0.664572, 0.0697899, -0.214666, 0.392473 )
+shape = SubResource( 62 )
+
+[node name="numpad8" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 8
+
+[node name="Numpad8" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad8"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0241737, 0, 0 )
+mesh = SubResource( 52 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num8" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad8/Numpad8"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, 0.0062007, 0.0475904, -0.188939, -0.243616, -0.42511, -0.00872615, -1.43996, -0.268382, 0.0489836 )
+mesh = SubResource( 53 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad8"]
+transform = Transform( 1, 0, 0, 0, 0.627224, 0, 0, 0, 0.655069, 0.0611115, -0.203781, -0.011673 )
+shape = SubResource( 63 )
+
+[node name="numpad9" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 9
+
+[node name="Numpad9" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad9"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0307693, 0, 0 )
+mesh = SubResource( 54 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num9" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad9/Numpad9"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00527782, 0.0275196, -0.189141, -0.243638, -0.426879, 0.000180505, -1.43996, -0.257392, -0.350307 )
+mesh = SubResource( 55 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad9"]
+transform = Transform( 1, 0, 0, 0, 0.679136, 0, 0, 0, 0.698123, 0.0912285, -0.195035, -0.401394 )
+shape = SubResource( 64 )
+
+[node name="numpad0" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+script = ExtResource( 23 )
+number = 0
+
+[node name="Numpad0" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad0"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158195, 0, 0.00439453 )
+mesh = SubResource( 36 )
+skeleton = NodePath("../../Frame")
+
+[node name="Num0" type="MeshInstance" parent="Room_02/Door2/Door/numpad/numpad0/Numpad0"]
+transform = Transform( 0.136979, -0.758209, -0.00696658, -0.00941434, 0.0202667, -0.18911, -0.243513, -0.427285, 0.00339232, -1.43996, -0.5568, 0.0409245 )
+mesh = SubResource( 37 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/numpad0"]
+transform = Transform( 1, 0, -5.42101e-20, 0, 0.75685, 0, 0, 0, 0.659972, 0.038166, -0.49555, -0.0128098 )
+shape = SubResource( 65 )
+
+[node name="okbutton" type="StaticBody" parent="Room_02/Door2/Door/numpad"]
+transform = Transform( 2.30696, 0, -8.0646e-13, 0, 0.996798, 0, 0, 0, 0.912407, -1.19143, 0.00390577, -0.0276165 )
+script = ExtResource( 28 )
+password = "5234"
+
+[node name="OkButton" type="MeshInstance" parent="Room_02/Door2/Door/numpad/okbutton"]
+transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1.92181, 0.377987, -0.0124291, -0.38686 )
+mesh = SubResource( 67 )
+
+[node name="OkText" type="MeshInstance" parent="Room_02/Door2/Door/numpad/okbutton/OkButton"]
+transform = Transform( -0.0061201, -0.891603, -0.00960069, -0.00554258, 0.0484764, -0.188694, -0.09879, 0.0525156, 0.0111814, -1.26788, -0.558927, -0.0046182 )
+mesh = SubResource( 68 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room_02/Door2/Door/numpad/okbutton"]
+transform = Transform( 0.582386, 0, 3.73719e-20, 0, 0.524521, 0, 0, 0, 1.06822, 0.53216, -0.515473, -0.415514 )
+shape = SubResource( 69 )
+
+[node name="walls" type="Node" parent="Room_02"]
+
+[node name="Wall1" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.94249, -71.1741, 4.85, 7.50252 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 72 )
+
+[node name="Label3D" type="Label3D" parent="Room_02/walls/Wall1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01533, 0.26123, 0 )
+text = "2458 + 2776"
+
+[node name="Wall5" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( 0.822098, 0, 0, 0, 4.85464, 0, 0, 0, 8.16537, -71.1522, 4.78864, -9.49868 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 72 )
+
+[node name="Wall2" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, 7.32946 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 74 )
+
+[node name="Wall6" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, -10.827 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 74 )
+
+[node name="Wall3" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( -3.85511e-08, 0, 16.0196, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -55.9748, 4.80927, -16.4235 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 73 )
+
+[node name="Wall4" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( -3.85511e-08, 0, 16.0196, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -55.9748, 4.80927, 13.4884 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 75 )
+
+[node name="Wall9" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( -4.3232e-08, 0, 17.9647, 0, 4.95079, 0, -0.83838, 0, -6.6565e-07, -24.1974, 4.80927, 2.06366 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 75 )
+
+[node name="Wall8" type="MeshInstance" parent="Room_02/walls"]
+transform = Transform( -4.22834e-08, 0, 17.5705, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -23.873, 4.80927, -5.3955 )
+mesh = SubResource( 70 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 75 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -0.934846, -3.03969 )
+use_collision = true
+height = 1.70395
+
+[editable path="Player"]
 [editable path="Door"]
 [editable path="Desk"]
 [editable path="light_switch"]
+[editable path="Room_02/Door2"]

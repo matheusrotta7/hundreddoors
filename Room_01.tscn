@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://addons/RadMatt.3DFPP/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://misc/instructions.png" type="Texture" id=2]
@@ -584,27 +584,19 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, -90, 0 ) ]
 }
 
-[sub_resource type="CubeMesh" id=70]
+[sub_resource type="SpatialMaterial" id=77]
+albedo_color = Color( 1, 0.584314, 0, 1 )
 
-[sub_resource type="ImageTexture" id=71]
+[sub_resource type="SpatialMaterial" id=79]
+albedo_color = Color( 1, 0.584314, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=72]
-albedo_color = Color( 1, 0.666667, 0, 1 )
-roughness_texture = SubResource( 71 )
-
-[sub_resource type="SpatialMaterial" id=74]
-albedo_color = Color( 1, 0.631373, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=73]
-albedo_color = Color( 1, 0.678431, 0, 1 )
-
-[sub_resource type="SpatialMaterial" id=75]
-albedo_color = Color( 1, 0.631373, 0, 1 )
+[sub_resource type="SpatialMaterial" id=78]
+albedo_color = Color( 0.984314, 0.623529, 0.00392157, 1 )
 
 [node name="Room_01" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201916, 1.42929, 4.7763 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3372, 1.8491, -1.68707 )
 
 [node name="world" type="Node" parent="."]
 
@@ -1164,14 +1156,6 @@ omni_range = 11.5403
 [node name="Ceiling_Lamp3" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -58.9698, 11.7346, 5.99616 )
 
-[node name="Ceiling_Lamp" type="MeshInstance" parent="Ceiling_Lamp3"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -1.00401, 1.92667 )
-mesh = ExtResource( 21 )
-material/0 = SubResource( 27 )
-material/1 = SubResource( 28 )
-material/2 = SubResource( 29 )
-material/3 = SubResource( 30 )
-
 [node name="CollisionShape" type="CollisionShape" parent="Ceiling_Lamp3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.699918, 0 )
 shape = SubResource( 31 )
@@ -1485,57 +1469,49 @@ shape = SubResource( 69 )
 
 [node name="walls" type="Node" parent="Room_02"]
 
-[node name="Wall1" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.94249, -71.1741, 4.85, 7.50252 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 72 )
+[node name="Wall2" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, 7.32946 )
+use_collision = true
+material = SubResource( 77 )
 
-[node name="Label3D" type="Label3D" parent="Room_02/walls/Wall1"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01533, 0.26123, 0 )
+[node name="Wall6" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, -10.7769 )
+use_collision = true
+material = SubResource( 77 )
+
+[node name="Wall7" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 8.42419, -71.1801, 4.80927, -9.72425 )
+use_collision = true
+material = SubResource( 77 )
+
+[node name="Wall10" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 7.08004, -71.1801, 4.80927, 7.77504 )
+use_collision = true
+material = SubResource( 77 )
+
+[node name="Label3D" type="Label3D" parent="Room_02/walls/Wall10"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.25465, 0.187232, 0 )
 text = "2458 + 2776"
 
-[node name="Wall5" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( 0.822098, 0, 0, 0, 4.85464, 0, 0, 0, 8.16537, -71.1522, 4.78864, -9.49868 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 72 )
-
-[node name="Wall2" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, 7.32946 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 74 )
-
-[node name="Wall6" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( 0.821033, 0, 0, 0, 4.84835, 0, 0, 0, 6.04489, -40.9454, 4.80927, -10.827 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 74 )
-
-[node name="Wall3" type="MeshInstance" parent="Room_02/walls"]
+[node name="Wall3" type="CSGBox" parent="Room_02/walls"]
 transform = Transform( -3.85511e-08, 0, 16.0196, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -55.9748, 4.80927, -16.4235 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 73 )
+use_collision = true
+material = SubResource( 79 )
 
-[node name="Wall4" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( -3.85511e-08, 0, 16.0196, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -55.9748, 4.80927, 13.4884 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 75 )
+[node name="Wall4" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( -3.85511e-08, 0, 16.0196, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -55.9748, 4.80927, 13.7834 )
+use_collision = true
+material = SubResource( 79 )
 
-[node name="Wall9" type="MeshInstance" parent="Room_02/walls"]
-transform = Transform( -4.3232e-08, 0, 17.9647, 0, 4.95079, 0, -0.83838, 0, -6.6565e-07, -24.1974, 4.80927, 2.06366 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 75 )
-
-[node name="Wall8" type="MeshInstance" parent="Room_02/walls"]
+[node name="Wall8" type="CSGBox" parent="Room_02/walls"]
 transform = Transform( -4.22834e-08, 0, 17.5705, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -23.873, 4.80927, -5.3955 )
-mesh = SubResource( 70 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 75 )
+use_collision = true
+material = SubResource( 78 )
+
+[node name="Wall9" type="CSGBox" parent="Room_02/walls"]
+transform = Transform( -4.22834e-08, 0, 17.5705, 0, 4.84835, 0, -0.821033, 0, -6.51877e-07, -23.873, 4.80927, 2.05068 )
+use_collision = true
+material = SubResource( 78 )
 
 [node name="CSGBox" type="CSGBox" parent="."]
 transform = Transform( 300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -0.934846, -3.03969 )

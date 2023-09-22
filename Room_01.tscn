@@ -1003,7 +1003,7 @@ shadow_contact = 0.45
 omni_range = 11.5403
 
 [node name="Player" parent="Room_02" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.441, 1.8491, -1.68707 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -121.341, 1.8491, -1.68707 )
 
 [node name="Room_03" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5747, 0, 0 )
@@ -1204,7 +1204,7 @@ shape = SubResource( 65 )
 [node name="okbutton" type="StaticBody" parent="Room_03/Door2/Door/numpad"]
 transform = Transform( 2.30696, 0, -8.0646e-13, 0, 0.996798, 0, 0, 0, 0.912407, -1.19143, 0.00390577, -0.0276165 )
 script = ExtResource( 28 )
-password = "5234"
+password = "7204"
 
 [node name="OkButton" type="MeshInstance" parent="Room_03/Door2/Door/numpad/okbutton"]
 transform = Transform( -0.211584, 0, 0, 0, 1, 0, 0, 0, 1.92181, 0.377987, -0.0124291, -0.38686 )
@@ -1303,6 +1303,8 @@ shadow_bias = 0.14
 shadow_contact = 0.45
 omni_range = 11.5403
 script = ExtResource( 29 )
+break_size = 11
+long_size = 5
 
 [node name="Ceiling_Lamp5" type="StaticBody" parent="Room_03/lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.8468, 9.6169, 6.48122 )

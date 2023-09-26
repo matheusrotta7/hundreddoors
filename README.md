@@ -1,4 +1,4 @@
-# Attention! This README is a copy of the original project at https://github.com/TheRadMatt/3D-FPP-Interaction-Demo, 
+Attention! This README is a copy of the original project at https://github.com/TheRadMatt/3D-FPP-Interaction-Demo, 
 the credit for all First Person View code, and interactions with objects goes to them, I just started building on top
 of it as it seemed like a good starting point for a 3D first person game. The idea will be to make 100 levels, hence 100 doors :)
 If you want to design a level just make sure to use Godot 3.5.2 and opening the project should be easy, if you need any help
